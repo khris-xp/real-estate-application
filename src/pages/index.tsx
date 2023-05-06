@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NextPage } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Flex } from '@chakra-ui/react';
@@ -12,7 +12,13 @@ interface Property {
   propertiesForRent: IProperties[];
 }
 
+interface GetStaticPropsReturn extends Omit<ReturnType<typeof getStaticProps>, 'props'> {
+  props: Property;
+}
+
+
 const Home: NextPage<Property> = ({ propertiesForSale, propertiesForRent }) => {
+  console.log(propertiesForSale, propertiesForRent);
   return (
     <Box>
       <Banner
@@ -44,7 +50,7 @@ const Home: NextPage<Property> = ({ propertiesForSale, propertiesForRent }) => {
 
 export default Home
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Property> = async () => {
   const propertiesForSale = await getAPIService(`${API_URL}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6}`);
   const propertiesForRent = await getAPIService(`${API_URL}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6}`);
   return {
@@ -52,5 +58,5 @@ export async function getStaticProps() {
       propertiesForSale: propertiesForSale.hits || [],
       propertiesForRent: propertiesForRent.hits || []
     }
-  }
-}
+  } as GetStaticPropsReturn;
+};
