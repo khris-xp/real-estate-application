@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import { NextPage, GetStaticProps } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { Box, Flex } from '@chakra-ui/react';
 import { Banner, Properties } from '@/components';
 import { IProperties } from '@/interfaces/properties';
@@ -24,31 +22,27 @@ const Home: NextPage<Property> = ({ propertiesForSale, propertiesForRent }) => {
           purpose='RENT A HOME'
           title1='Rental Homes for'
           title2='Everyone'
-          desc1='Explore Aprtment Villas, Homes'
+          desc1=' Explore from Apartments, builder floors, villas'
           desc2='and more'
-          buttonText='Explore Rending'
+          buttonText='Explore Renting'
           linkName='/search?purpose=for-rent'
-          imageUrl='https://assets-global.website-files.com/5c6d6c45eaa55f57c6367749/624b471bdf247131f10ea14f_61d31b8dbff9b500cbd7ed32_types_of_rooms_in_a_5-star_hotel_2_optimized_optimized.jpeg'
+          imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4'
         />
-        <Flex className='flex-wrap'>
-          {propertiesForRent.map((property: IProperties) =>
-            <Properties key={property.id} property={property} />
-          )}
+        <Flex flexWrap='wrap' className='flex mx-auto container justify-center'>
+          {propertiesForRent.map((property: IProperties) => <Properties property={property} key={property.id} />)}
         </Flex>
         <Banner
           purpose='BUY A HOME'
-          title1='Buy Your Dream'
-          title2='Home'
-          desc1='Explore Aprtment Villas, Homes'
-          desc2='and more'
+          title1=' Find, Buy & Own Your'
+          title2='Dream Home'
+          desc1=' Explore from Apartments, land, builder floors,'
+          desc2=' villas and more'
           buttonText='Explore Buying'
           linkName='/search?purpose=for-sale'
-          imageUrl='https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill'
+          imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
         />
-        <Flex className='flex-wrap'>
-          {propertiesForSale.map((property: IProperties) => (
-            <Properties key={property.id} property={property} />
-          ))}
+        <Flex flexWrap='wrap' className='flex mx-auto container justify-center'>
+          {propertiesForSale.map((property: IProperties) => <Properties property={property} key={property.id} />)}
         </Flex>
       </Box>
     </Fragment>

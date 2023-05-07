@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
 import { Box } from '@chakra-ui/react'
+import { Navbar, Footer } from '@/components'
 
 const Layouts = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -8,15 +9,15 @@ const Layouts = ({ children }: { children: React.ReactNode }) => {
             <Head>
                 <title>Real Estate</title>
             </Head>
-            <Box maxWidth='1280px' m='aut0'>
+            <Box m='aut0'>
                 <header>
-                    Navbar
+                    <Navbar />
                 </header>
                 <main>
                     {children}
                 </main>
                 <footer>
-                    Footer
+                    <Footer />
                 </footer>
             </Box>
         </Fragment>
