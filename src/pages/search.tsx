@@ -4,7 +4,7 @@ import { NextRouter, useRouter } from 'next/router';
 import Image from 'next/image';
 import { Flex, Box, Text, Icon } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
-import { SearchFilter, Properties } from '@/components';
+import { SearchFilters, Properties } from '@/components';
 import { API_URL, getAPIService } from '@/services/api.services';
 import { IProperties } from '@/interfaces/properties';
 
@@ -28,7 +28,7 @@ const Search: NextPage<Property> = ({ properties }) => {
                     <Text>Search Property by Filters</Text>
                     <Icon as={BsFilter} paddingLeft='2' w='7' />
                 </Flex>
-                {searchFilter && <SearchFilter />}
+                {searchFilter && <SearchFilters />}
                 <Text fontSize='2xl' p='4' fontWeight='bold'>
                     Properties {router.query.purpose === 'for-sale' ? 'for Sale' : 'for Rent'}
                 </Text>
