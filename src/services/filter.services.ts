@@ -1,6 +1,5 @@
 import { IFilterDataItem, IFilterValues } from "@/interfaces/filter";
 
-
 export const filterData: IFilterDataItem[] = [
     {
         items: [
